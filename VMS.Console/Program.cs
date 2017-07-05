@@ -1,6 +1,4 @@
-﻿using Castle.MicroKernel.Registration;
-using System;
-using VMS.Model;
+﻿using VMS.Model;
 using VMS.Model.Dependency;
 
 namespace VMS.Console
