@@ -67,5 +67,10 @@ namespace VMS.Model.Dependency
                 conventional.RegisterAssembly(assembly);
             }
         }
+
+        public T Resolve<T>()
+        {
+            return IocContainer.Resolve<T>();
+        }
     }
 }

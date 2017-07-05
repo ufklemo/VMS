@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using VMS.Model.Dependency;
@@ -15,23 +16,32 @@ namespace VMS.Model
         protected bool IsDisposed;
         public IIOCManager IOC { get; private set; }
         public Type StartupModule { get; private set; }
+        private static object _lock = new object();
         private VMSBootStrap(Type startModule)
         {
             IOC = IOCManager.Instance;
             StartupModule = startModule;
         }
         private static VMSBootStrap instance;
-        public VMSBootStrap Create(Type startModule)
+        public static VMSBootStrap Create(Type startModule)
         {
             if (instance != null)
             {
                 return instance;
             }
-            lock (instance)
+            //instance初始化之前为Null,lock不能作用于Null值对象
+            //lock (instance)       
+            lock (_lock)
             {
                 instance = new VMSBootStrap(startModule);
             }
             return instance;
+        }
+
+        public void Initialize()
+        {
+            IOC.AddConvention(new BasicDependencyConventional());
+            IOC.RegisterByConvention(Assembly.GetExecutingAssembly());
         }
 
         /// <summary>

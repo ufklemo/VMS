@@ -17,5 +17,6 @@ namespace VMS.Model.Dependency
         void Register(Type tType, Type tImp, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Transient);
         void AddConvention(IDependencyConventional dependencyConventional);
         void RegisterByConvention(Assembly assembly);
+        T Resolve<T>();
     }
 }
