@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
@@ -51,7 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperTest\AccountManagement\AccountProfile.cs" />
+    <Compile Include="AutoMapperTest\AccountManagement\DTO\AccountDTO.cs" />
+    <Compile Include="AutoMapperTest\AccountManagement\Entity\Account.cs" />
+    <Compile Include="AutoMapperTest\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapperTest\MapperTest.cs" />
+    <Compile Include="AutoMapperTest\OrderManagement\DTO\OrderDTO.cs" />
+    <Compile Include="AutoMapperTest\OrderManagement\Entity\Order.cs" />
+    <Compile Include="AutoMapperTest\OrderManagement\OrderProfile.cs" />
     <Compile Include="ConsoleModule.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\IntExtension.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +79,7 @@
       <Name>VMS.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
